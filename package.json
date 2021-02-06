@@ -1,0 +1,30 @@
+{
+  "name": "ardmorse",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marko154/ardmorse.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marko154/ardmorse/issues"
+  },
+  "homepage": "https://github.com/marko154/ardmorse#readme",
+  "dependencies": {
+    "@serialport/parser-readline": "^9.0.1",
+    "express": "^4.17.1",
+    "serialport": "^9.0.6",
+    "ws": "^7.4.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
