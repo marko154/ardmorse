@@ -1,7 +1,32 @@
 const SerialPort = require("serialport");
 const Readline = require("@serialport/parser-readline");
 const WebSocket = require("ws");
-const socket = new WebSocket("ws://localhost:8080");
+const socket = new WebSocket("ws://localhost:3000");
+const express = require("express");
+const http = require("http");
+
+const app = express();
+const server = http.createServer(app);
+const webSocket = new WebSocket.Server({ server: server });
+
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
+
+webSocket.on("connection", function connection(ws) {
+	console.log("new client has connnected");
+			ws.send("101");
+			sleep(3000);
+			ws.send("1");
+			sleep(3000);
+			ws.send("11");
+
+});
+
 
 const cliArguments = process.argv;
 if (cliArguments.length < 3)
@@ -18,11 +43,4 @@ lineStream.on("data", (stream) => {
 	socket.send(stream);
 });
 
-socket.addEventListener("open", function (event) {
-	console.log("connected");
-	socket.send("ready");
-});
-
-socket.addEventListener("message", function (event) {
-	console.log("Message from server ", event.data);
-});
+server.listen(8079, () => console.log("listening on port 8079"));
