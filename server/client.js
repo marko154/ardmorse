@@ -9,24 +9,22 @@ const app = express();
 const server = http.createServer(app);
 const webSocket = new WebSocket.Server({ server: server });
 
-function sleep(milliseconds) {
-  const date = Date.now();
-  let currentDate = null;
-  do {
-    currentDate = Date.now();
-  } while (currentDate - date < milliseconds);
-}
+const sleep = (milliseconds) => {
+	const date = Date.now();
+	let currentDate = null;
+	do {
+		currentDate = Date.now();
+	} while (currentDate - date < milliseconds);
+};
 
 webSocket.on("connection", function connection(ws) {
 	console.log("new client has connnected");
-			ws.send("101");
-			sleep(3000);
-			ws.send("1");
-			sleep(3000);
-			ws.send("11");
-
+	ws.send("101");
+	sleep(1000);
+	ws.send("1");
+	sleep(1000);
+	ws.send("11");
 });
-
 
 const cliArguments = process.argv;
 if (cliArguments.length < 3)
