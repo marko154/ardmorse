@@ -50,8 +50,14 @@
     return 2;
   }
 
+  void inter(){
+    Serial.println("ready");
+    kill = true;
+  }
+
   void setup() {
     Serial.begin(9600);
+    attachInterrupt(digitalPinToInterrupt(3),inter, CHANGE);
     pinMode(powerOnButton,INPUT);
     pinMode(dotDashButton,INPUT);
     pinMode(powerOnLED,OUTPUT);
@@ -66,12 +72,13 @@
     ki bo pripravil arduino na naslednje branje
     alert++ začasno da ne gre nazaj v if stavek*/
     if(alert==2){
-    Serial.println(output);
-    kill = true;
-    alert++;
+      Serial.println(output);
+      alert = 0;
+      output = 1;
+      delay(5000);
     }
+    
     if(!kill){
-      
       //če držiš powerOnButton poveča poweron ki pozneje zažene program
       if(digitalRead(2)){
         poweron++;
