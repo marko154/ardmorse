@@ -1,0 +1,28 @@
+.App {
+	text-align: center;
+
+	main {
+		display: flex;
+		justify-content: space-evenly;
+
+		.send-icon {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-evenly;
+
+			svg {
+				color: rgba(0, 0, 0, 0.5);
+				font-size: 1.3rem;
+			}
+			.active {
+			}
+		}
+	}
+	.instructions {
+		margin-top: 100px;
+		svg {
+			margin-left: -20px;
+			padding: 0 8px;
+		}
+	}
+}

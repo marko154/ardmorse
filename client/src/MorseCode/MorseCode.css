@@ -1,7 +1,8 @@
 .morse-letter {
 	display: flex;
 	align-items: center;
-	width: 150px;
+	width: 200px;
+	padding: 0 25px;
 }
 
 .dash {
