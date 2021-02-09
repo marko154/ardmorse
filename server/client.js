@@ -1,7 +1,7 @@
 const SerialPort = require("serialport");
 const Readline = require("@serialport/parser-readline");
 const WebSocket = require("ws");
-const socket = new WebSocket("ws://localhost:3000");
+let cl = {};
 const express = require("express");
 const http = require("http");
 
@@ -19,11 +19,7 @@ const sleep = (milliseconds) => {
 
 webSocket.on("connection", function connection(ws) {
 	console.log("new client has connnected");
-	ws.send("101");
-	sleep(1000);
-	ws.send("1");
-	sleep(1000);
-	ws.send("11");
+	cl = ws;
 });
 
 const cliArguments = process.argv;
@@ -37,8 +33,12 @@ const port = new SerialPort(arduinoPort, {
 
 const lineStream = port.pipe(new Readline({ delimiter: "\r\n" }));
 lineStream.on("data", (stream) => {
-	console.log(stream);
-	socket.send(stream);
+	if(stream!=1){
+		console.log(stream.substring(1));
+		cl.send(stream.substring(1));
+	}
+
+
 });
 
 server.listen(8079, () => console.log("listening on port 8079"));
