@@ -1,11 +1,13 @@
 .other-side {
-	width: 35vw;
-	margin-top: 30px;
+	width: 33vw;
+	margin-top: 60px;
 	padding: 30px 40px;
 	border: 1px solid rgba(0, 0, 0, 0.2);
 	border-radius: 5px;
 	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 	transition: 0.05s ease;
+	opacity: 0;
+	animation: 1s popup ease 0.2s forwards;
 
 	.device {
 		padding: 10px;

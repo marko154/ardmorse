@@ -1,10 +1,12 @@
 import MorseCode from "../MorseCode/MorseCode";
 import "./OtherSide.scss";
 
-const OtherSide = ({ letters, morseCode }) => {
+const OtherSide = ({ letters, morseCode, device }) => {
 	return (
 		<section className="other-side">
-			<div className="device">Other device: Arduino Nano on COM5</div>
+			<div className="device">
+				{device ? `Other device: ${device}` : "Waiting to connect"}
+			</div>
 			<div className="state">
 				<div className="word">
 					<p> {letters.join(" ")} </p>
