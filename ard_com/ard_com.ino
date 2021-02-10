@@ -22,6 +22,7 @@
   int poweron=0;
 
   // pin declare
+  int interruptButton = 3;
   int powerOnButton = 2;
   int dotDashButton = 5;
   int powerOnLED = 7;
@@ -50,6 +51,7 @@
     return 2;
   }
 
+  //funkcija, ki jo interrupt kliče
   void inter(){
     Serial.println("ready");
     kill = true;
@@ -57,7 +59,8 @@
 
   void setup() {
     Serial.begin(9600);
-    attachInterrupt(digitalPinToInterrupt(3),inter, CHANGE);
+    //interrupt
+    attachInterrupt(digitalPinToInterrupt(interruptButton),inter, CHANGE);
     pinMode(powerOnButton,INPUT);
     pinMode(dotDashButton,INPUT);
     pinMode(powerOnLED,OUTPUT);
@@ -68,9 +71,8 @@
   void loop() {
     
     /*če je dvakrat undefined bo izpisalo končno črko (v morse) in
-    vžgalo kill switch pozneje bom dodal namesto kill switch reset switch, 
-    ki bo pripravil arduino na naslednje branje
-    alert++ začasno da ne gre nazaj v if stavek*/
+    vžgalo kill switch, ki bo začasno ugasnil program da se uporabnik 
+    pripravi na vnos naslednje črke*/
     if(alert==2){
       Serial.println(output);
       alert = 0;
