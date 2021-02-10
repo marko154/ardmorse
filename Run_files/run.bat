@@ -1,3 +1,4 @@
+cd ..
 cd server
 start cmd.exe /k node client.js COM3
 cd.. 
