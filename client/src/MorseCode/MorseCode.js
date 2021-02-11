@@ -1,4 +1,4 @@
-import "./MorseCode.css";
+import "./MorseCode.scss";
 
 // animates a morse code letter
 const MorseCode = ({ morseCode }) => {

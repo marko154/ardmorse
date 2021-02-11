@@ -1,0 +1,41 @@
+.morse-letter {
+	display: flex;
+	align-items: center;
+	width: 200px;
+	padding: 0 25px;
+	.dash {
+		background: black;
+		height: 15px;
+		border-radius: 7px;
+		margin: 0 4px;
+		animation: ease-out dash 0.4s forwards;
+	}
+
+	.dot {
+		width: 30px;
+		height: 30px;
+		transform: scale(0);
+		background: black;
+		border-radius: 50%;
+		margin: 0 4px;
+		animation: ease-out dot 0.4s forwards;
+	}
+}
+
+@keyframes dash {
+	0% {
+		width: 0;
+	}
+	100% {
+		width: 40px;
+	}
+}
+
+@keyframes dot {
+	0% {
+		transform: scale(0);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
