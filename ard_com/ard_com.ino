@@ -134,7 +134,6 @@
 
       //ko držiš powerOnButton vžge {bool sw}
       if(poweron>10){
-        Serial.println(BOARD);
         digitalWrite(7,HIGH);
         sw = true;
         delay(10000);

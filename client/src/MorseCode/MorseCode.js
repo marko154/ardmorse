@@ -7,7 +7,7 @@ const MorseCode = ({ morseCode }) => {
 		<div className="morse-letter">
 			{morseCode.length > 0 &&
 				[...morseCode[morseCode.length - 1]].map((sign, i) =>
-					sign === "0" ? (
+					sign === "1" ? (
 						<div
 							className="dash"
 							key={i}
