@@ -11,11 +11,11 @@ import { AiFillGithub } from "react-icons/ai";
 import morsemap from "./morsemap";
 
 const socket = new WebSocket("ws://localhost:8079");
-const serverSocket = new WebSocket("ws://localhost:8080");
+const serverSocket = new WebSocket("ws://d3d525cb0aab.ngrok.io");
 
 function App() {
 	const [page, setPage] = useState("main");
-	const [models, setModels] = useState({ client: null, other: null });
+	const [models, setModels] = useState({ client:"Arduino uno COM3", other: "Eleego nano COM5" });
 	// client
 	const [letters, setLetters] = useState([]);
 	const [morseCode, setMorseCode] = useState([]);
@@ -43,9 +43,9 @@ function App() {
 	});
 
 	const handleAccept = () => {
-		if (letters.length !== 0 && letters[0] !== "pizda") {
-			serverSocket.send(letters[letters.length - 1]);
-		}
+
+		serverSocket.send(morseCode[morseCode.length - 1]);
+
 		setIsSending(true);
 		setTimeout(() => {
 			setIsSending(false);

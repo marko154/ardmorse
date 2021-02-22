@@ -12,9 +12,9 @@ let id = 0;
 
 webSocket.on("connection", function connection(ws) {
 	console.log("new client has connnected");
-  
 	if(Object.keys(lookup).length==0 || ws != lookup[0]){
 	lookup[id] = ws;
+	console.log("fuk yu");
 	id++;
 }
 
